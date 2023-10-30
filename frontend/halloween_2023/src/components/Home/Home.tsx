@@ -29,7 +29,7 @@ export default function Home(): ReactElement{
         <div className='Home-Container'>
             <ReactTyped strings={["Welcome to CodeSpook"]} typeSpeed={80} />
             {dayNumbs.map(numb => {
-                return <DayPreview DayNumb = {numb}/>
+                return <DayPreview DayNumb = {numb} Pumpkin={user ? user.pumpkinsAchieved[numb-1]:false}/>
             })}  
         </div>
 
