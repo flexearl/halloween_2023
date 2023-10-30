@@ -1,18 +1,24 @@
-package password 
+package password
 
 import (
-	"fmt"
+	"log"
+
 	"golang.org/x/crypto/bcrypt"
 )
 
+func HashPassword(password string) string {
+	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return string(bytes)
+}
 
-func HashPassword(password string) (string, error){
-	bytes, err := GenerateFromPassword([]byte(password), 14)
-	return string(bytes), err
+func GenerateFromPassword(b []byte, i int) {
+	panic("unimplemented")
 }
 
 func CheckPasswordHash(password, hash string) bool {
 	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
 	return err == nil
 }
-

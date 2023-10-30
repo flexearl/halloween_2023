@@ -1,15 +1,18 @@
 package main
 
 import (
-	"github.com/flexearl/halloween_2023.git/routes"
 	"log"
 	"net/http"
+
+	"github.com/flexearl/halloween_2023.git/connections"
+	"github.com/flexearl/halloween_2023.git/routes"
 )
 
 func main() {
-	svr := http.NewServeMux()
+	//svr := http.NewServeMux()
 	routes.HandleRouting()
-	err := http.ListenAndServe(":8000", svr)
+	connections.StartDatabase()
+	err := http.ListenAndServe(":8000", nil)
 	if err != nil {
 		log.Fatal(err)
 	}

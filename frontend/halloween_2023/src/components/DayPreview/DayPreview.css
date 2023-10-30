@@ -1,0 +1,28 @@
+.DayPreview-Link{
+    text-decoration: none;
+    color: #F58840;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 18pt;
+  
+    font-weight: normal;
+    text-align: center;
+    text-shadow: 0 0 1.5px #F58840, 0 0 3.5px #F58840;
+}
+
+.DayPreview-Container{
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    margin-top: 50px;
+    border-radius: 1px;
+    border: solid;
+    border-color: #F58840;
+    width: 15rem;
+    justify-content: space-between;
+}
+
+.Pumpkin-Picture{
+    height: 30px;
+    width: 40px;
+    filter: brightness(17%);
+}
