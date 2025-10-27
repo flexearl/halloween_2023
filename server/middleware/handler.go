@@ -2,8 +2,11 @@ package middleware
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
+	"strconv"
+	"strings"
 
 	"github.com/flexearl/halloween_2023.git/pumpkin"
 	"github.com/flexearl/halloween_2023.git/puzzle"
@@ -14,7 +17,35 @@ func Home(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Home"))
 }
 
+func GetUserPuzzleInput(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Getting user puzzle input")
+	userIDStr := r.URL.Query().Get("userid")
+	dayNumberStr := r.URL.Query().Get("daynumber")
+	userID, err := strconv.Atoi(userIDStr)
+	if err != nil {
+		http.Error(w, "Invalid User ID", http.StatusBadRequest)
+		return
+	}
+	dayNumb, err := strconv.Atoi(dayNumberStr)
+	if err != nil {
+		http.Error(w, "Invalid Day", http.StatusBadRequest)
+		return
+	}
+
+	puzzleInput := puzzle.GetUserPuzzleInput(dayNumb, userID)
+	response := map[string]interface{}{
+		"message":      "Successful Request",
+		"puzzle_input": puzzleInput,
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+
+	json.NewEncoder(w).Encode(response)
+	fmt.Println("Finished")
+}
+
 func Register(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Registering User")
 	//Register user in database
 	var newUser *user.User
 	decoder := json.NewDecoder(r.Body)
@@ -22,7 +53,17 @@ func Register(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	newUser.RegisterUser()
+	userID := newUser.RegisterUser()
+	puzzle.AddUserPuzzleInput(userID)
+	response := map[string]interface{}{
+		"message": "User created successfully",
+		"userID":  userID,
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+
+	json.NewEncoder(w).Encode(response)
 }
 
 func AddPumpkin(w http.ResponseWriter, r *http.Request) {
@@ -50,12 +91,17 @@ func CheckUserPumpkins(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetPuzzleContent(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("Getting Puzzle Content")
 	var dayNumb int
-	decoder := json.NewDecoder(r.Body)
-	err := decoder.Decode(&dayNumb)
+
+	path := r.URL.Path
+	idStr := strings.TrimPrefix(path, "/get_puzzle_content/")
+	dayNumb, err := strconv.Atoi(idStr)
 	if err != nil {
-		log.Fatal(err)
+		http.Error(w, "Invalid puzzle number", http.StatusBadRequest)
+		return
 	}
+
 	content := puzzle.GetPuzzleContent(dayNumb)
 	jsonContent, err := json.Marshal(content)
 	if err != nil {

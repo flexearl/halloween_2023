@@ -1,6 +1,8 @@
 package user
 
 import (
+	"log"
+
 	"github.com/flexearl/halloween_2023.git/connections"
 	"github.com/flexearl/halloween_2023.git/password"
 )
@@ -26,13 +28,17 @@ func GetUser(userName string) (User, error) {
 	return newUser, err
 }
 
-func (u *User) RegisterUser() error {
+func (u *User) RegisterUser() int {
 	//Registers user in the database
 	u.HashedPassword = password.HashPassword(u.HashedPassword)
-	dsn := `INSERT INTO TABLE user (username, email, hashedpassword, firstname, surname)
-	VALUES (?, ?, ?, ?, ?)`
+	dsn := `INSERT INTO user (username, email, hashedpassword)
+	VALUES (?, ?, ?);`
 	db := connections.StartDatabase()
-	_, err := db.Exec(dsn, u.UserName, u.EmailAddress,
-		u.HashedPassword, u.FirstName, u.Surname)
-	return err
+	result, err := db.Exec(dsn, u.UserName, u.EmailAddress,
+		u.HashedPassword)
+	if err != nil {
+		log.Panic(err)
+	}
+	userID, err := result.LastInsertId()
+	return int(userID)
 }

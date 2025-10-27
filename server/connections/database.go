@@ -8,7 +8,7 @@ import (
 )
 
 func StartDatabase() *sql.DB {
-	db, err := sql.Open("mysql", "flex:Marley123@tcp(halloween-2023.c5zvii8avkbe.eu-west-2.rds.amazonaws.com:3306)/initial_db")
+	db, err := sql.Open("mysql", "root:Marley123@tcp(127.0.0.1:3306)/halloween_code")
 	if err != nil {
 		fmt.Println(err)
 	}

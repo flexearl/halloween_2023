@@ -1,0 +1,42 @@
+🕯️ Story
+
+In the ghostly library of Hollowmere Abbey, there is a cursed book known as the Codex of Reflections.
+Every word written within its pages must obey the Law of the Mirror — it must read the same in the reflection of a haunted mirror... but not always letter by letter.
+
+Some of these cursed words are not true palindromes — instead, their magic lies in their blocks of power.
+A word is said to be a Block Palindrome if it can be split into two or more consecutive blocks, such that reversing the order of the blocks produces exactly the same sequence of blocks.
+
+Each block contains one or more letters, and all blocks must remain intact when reversed.
+
+💀 Examples from the Codex
+
+Using brackets ( ) to mark the cursed blocks:
+
+BONBON → (BON)(BON)
+Two mirror blocks, perfectly balanced.
+
+ONION → (ON)(I)(ON)
+The mirror reflects the outer rings first.
+
+BBACBB →
+
+(B)(BACB)(B)
+
+(BB)(AC)(BB)
+
+(B)(B)(AC)(B)(B)
+Three distinct reflections — beware which one you summon!
+
+However:
+
+(BB)(AC)(B)(B) is not valid, because reversing it gives (B)(B)(AC)(BB) — a broken mirror image.
+
+🎃 Your Task
+
+Write a program to determine how many different ways a word from the Codex can be split into blocks so that it forms a Block Palindrome.
+
+The word will always contain between 2 and 10 uppercase letters — the cursed tome cannot bear longer spells.
+
+🔮 Input
+
+A single line containing one uppercase word (e.g. ONION, BONBON, BBACBB).

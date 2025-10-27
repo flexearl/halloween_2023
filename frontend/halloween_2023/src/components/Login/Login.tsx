@@ -50,7 +50,7 @@ export default function Login(): ReactElement{
                     <input placeholder="Email Address" value={emailAddress} onChange={handleEmailAdressChange}/>
                     <input placeholder="Password" value={password} onChange={handlePasswordChange}/>
                     <button onClick={handleLoginClick} className='submit-btn'>Login</button>
-                    <Link to ="/register"/>
+                    <Link to ="/register">Register</Link>
                 </div>
             </div>
         </div>

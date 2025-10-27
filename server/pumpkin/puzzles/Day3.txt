@@ -1,0 +1,60 @@
+// 2015 Q3 \\
+
+Deep in the heart of Ravenwood Manor, a haunted gallery comes alive every Halloween night.
+Each year, the Curator of Shadows prepares an eerie exhibition of cursed artifacts created by the realm’s most infamous dark artists:
+
+A — Armand the Alchemist, master of potions and metallic sculptures.
+
+B — Beatrix the Bonecarver, whose skeletal creations rattle softly in the night.
+
+C — Corvus the Crowmage, painter of black-feathered nightmares.
+
+D — Delilah the Dollmaker, known for her unsettling porcelain works that sometimes… move.
+
+The curator must arrange these cursed artifacts in a row inside the Haunted Gallery.
+However, because each artist’s works are infused with identical dark magic, all pieces by the same artist are indistinguishable.
+
+For instance, suppose the exhibition includes:
+
+1 work by Armand (A)
+
+2 by Beatrix (B)
+
+1 by Corvus (C)
+
+Then the possible arrangements of the artifacts (each represented by their artist’s initial) are:
+
+ABBC
+ABCB
+ACBB
+BABC
+BACB
+BBAC
+BBCA
+BCAB
+BCBA
+CABB
+CBAB
+CBBA
+
+
+These are listed in alphabetical order, as demanded by the curator’s ancient spellbook of order.
+
+💀 Your Task
+
+Write a program to determine the n-th possible arrangement of the Haunted Gallery.
+
+Your program should input five integers:
+a, b, c, d, n
+
+where:
+
+a, b, c, and d are the number of works by Armand, Beatrix, Corvus, and Delilah respectively (each between 0 and 5, inclusive).
+
+n is the number (1 ≤ n ≤ 234) representing which arrangement the Curator wishes to summon.
+
+At least one artist will have contributed at least one piece, and n will never exceed the total number of possible arrangements.
+
+🎃 Output
+
+Your program should output a single string — the n-th arrangement of cursed artworks in lexicographical order (A < B < C < D).

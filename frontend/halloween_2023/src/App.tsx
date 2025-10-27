@@ -30,6 +30,7 @@ function App():ReactElement {
             <Route index element={<Home/>}/>
             <Route path={'/day/:number'} element={<DayPage/>}/>
             <Route path="/login" element={<Login/>}/>
+            <Route path="/register" element={<Register/>}/>
             
           </Routes>
 

@@ -1,0 +1,28 @@
+🕯️ Story
+
+It’s Halloween night in the village of Hallowdale, and you’ve been tasked with counting how many pumpkins are glowing in the streets.
+Each house on the street puts out one decoration — it could be a pumpkin (🎃), a ghost (👻), or a bat (🦇).
+
+The mayor needs to know how many pumpkins are on display tonight so she can judge the Best Decorated Street competition.
+
+💀 Your Task
+
+Write a program that counts how many pumpkins appear in a string of decorations.
+
+🎃 Input
+
+A single line containing a string of emojis or letters representing decorations.
+
+Each decoration is represented by one character:
+
+P for Pumpkin
+
+G for Ghost
+
+B for Bat
+
+The string length is between 1 and 50.
+
+🦇 Output
+
+A single integer — the number of pumpkins (P) in the input.

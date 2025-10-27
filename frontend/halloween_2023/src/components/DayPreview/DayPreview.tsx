@@ -13,13 +13,14 @@ interface DayPreviewProps {
 export default function DayPreview(props: DayPreviewProps): ReactElement {
 
     return(
-        <div className="DayPreview-Container">
-            <Link to ={"/day/"+props.DayNumb} className='DayPreview-Link'>{"Day "+props.DayNumb}
-            
+        <>
+            <Link to ={"/day/"+props.DayNumb} className='DayPreview-Link'>
+               
+                {"Day "+props.DayNumb}
+                <img src ={pumpkin} className='Pumpkin-Picture'/>
+                
             </Link>
-            <img src ={pumpkin}className='Pumpkin-Picture'/>
-        </div>
-
+        </>
        
     )
 }
