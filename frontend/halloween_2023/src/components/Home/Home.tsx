@@ -1,7 +1,7 @@
 import React, {ReactElement, useEffect} from 'react'
 import DayPreview from '../DayPreview/DayPreview'
 import { Link } from 'react-router-dom'
-import ReactTyped from 'react-typed'
+import ReactTyped from 'react-typed-component'
 import './Home.css'
 import axios from 'axios'
 import { UserContext } from '../UserContext'
