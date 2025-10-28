@@ -7,7 +7,7 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import { TypeWriter } from './components/Typewriter';
-import ReactTyped from "react-typed";
+import ReactTyped from "react-typed-component";
 import DayPage from './components/DayPage/DayPage';
 import { createContext } from 'vm';
 import { UserContext, UserContextProps, User } from './components/UserContext';
